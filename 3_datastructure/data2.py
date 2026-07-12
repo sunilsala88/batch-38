@@ -7,7 +7,7 @@ l1.append(100)
 l1.insert(1,200)
 print(l1)
 
-#index and slice
+#index and slice (access)
 print(l1[0])
 print(l1[-2:])
 
@@ -16,6 +16,12 @@ l1.remove(66)
 print(l1)
 l1.pop(-1)
 print(l1)
+
+
+#update
+l1[-1]=106
+print(l1)
+
 
 #index
 print(l1.index(55))
