@@ -13,3 +13,14 @@ print(s)
 s.remove(20)
 print(s)    
 
+
+
+s1='nifty,banknifty,tsla,apple'
+l=s1.split(',')
+print(l)
+
+l1=['nifty','banknifty','tsla','apple']
+s2=','.join(l1)
+print(s2)
+
+
