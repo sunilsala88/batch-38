@@ -21,20 +21,31 @@ l1=[33,44,55,66,77]
 # print('Max:', max)
 
 #type 3
-max=l1[0]
-for i in range(len(l1)):
-    if l1[i]>max:
-        max=l1[i]
-print('Max:', max)
+# max=l1[0]
+# for i in range(len(l1)):
+#     if l1[i]>max:
+#         max=l1[i]
+# print('Max:', max)
 
 
-index=0
-max=l1[0]
+# index=0
+# max=l1[0]
+# while True:
+#     if l1[index]>max:
+#         max=l1[index]
+#     index=index+1
+#     if index>=len(l1):
+#         break
+# print('Max:', max)
+
+
+
 while True:
-    if l1[index]>max:
-        max=l1[index]
-    index=index+1
-    if index>=len(l1):
+    number=int(input('Please enter a prime number: '))
+    if number==7:
+        print(number)
         break
-print('Max:', max)
 
+print('-------------------')
+
+#every single problem can be solved using while loop, but not every problem can be solved using for loop
