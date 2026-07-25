@@ -25,5 +25,11 @@ print(list(stock_prices.values()))
 print(list(stock_prices.items()))
 
 #type 4
+total=0
 for i,j in stock_prices.items():
     print(i,j)
+    total=total+j
+    print(total)
+
+print('Total:', total)
+
