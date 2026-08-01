@@ -35,28 +35,28 @@ str1='hello'
 n=len(str1)
 print(n)
 
-def length(n):
+def length(abc:str)->int:
     count=0
-    for i in str1:
+    for i in abc:
         count+=1
     return count
 
-n1=length(n)
+n1=length(str1)
 print(n1)
 
 l1=[1,2,3,4,5]
 
-def reverse1(lst):
+def reverse1(xyz:list)->list:
     l2=[]
-    for i in range(-1,-(len(lst)+1),-1):
-        l2.append(lst[i])
+    for i in range(-1,-(len(xyz)+1),-1):
+        l2.append(xyz[i])
     return l2
 
 l2=reverse1(l1)
 print(l2)
 
 
-def fibonacci(n):
+def fibonacci(n:int)->list:
     fib=[0,1]
     for i in range(n-2):
         prev=fib[-1]
