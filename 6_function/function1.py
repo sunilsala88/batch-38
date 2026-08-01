@@ -29,3 +29,24 @@ def average(lst):
 
 print("Average of prices:", average(prices))
 print("Average of returns:", average(returns))
+
+
+str1='hello'
+n=len(str1)
+print(n)
+
+def length(n):
+    count=0
+    for i in str1:
+        count+=1
+    return count
+
+n1=length(n)
+print(n1)
+
+l1=[1,2,3,4,5]
+
+
+
+l2=reverse1(l1)
+print(l2)
