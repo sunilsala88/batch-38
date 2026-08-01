@@ -56,4 +56,15 @@ l2=reverse1(l1)
 print(l2)
 
 
-fl=fibonacci(10)
+def fibonacci(n):
+    fib=[0,1]
+    for i in range(n-2):
+        prev=fib[-1]
+        prev_prev=fib[-2]
+        current=prev+prev_prev
+        fib.append(current)
+    return fib
+
+
+fl=fibonacci(20)
+print(fl)
