@@ -68,3 +68,17 @@ def fibonacci(n:int)->list:
 
 fl=fibonacci(20)
 print(fl)
+
+
+def add(num1:int,num2:int)->float:
+    total=num1+num2
+
+num1=10
+num2=20
+result=add(num1,num2)
+print(result)
+
+
+
+
+#add,sub,mul div
