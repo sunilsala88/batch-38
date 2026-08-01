@@ -46,7 +46,14 @@ print(n1)
 
 l1=[1,2,3,4,5]
 
-
+def reverse1(lst):
+    l2=[]
+    for i in range(-1,-(len(lst)+1),-1):
+        l2.append(lst[i])
+    return l2
 
 l2=reverse1(l1)
 print(l2)
+
+
+fl=fibonacci(10)
