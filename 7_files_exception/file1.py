@@ -14,7 +14,40 @@ data='this is some import data'
 # f2.close()
 
 
-f3=open('demo.txt','a')
-f3.write('tsla\n')
-f3.close()
+# f3=open('demo.txt','a')
+# f3.write('tsla\n')
+# f3.close()
 
+
+
+stock_prices={'AAPL': 150, 'GOOG': 2800, 'MSFT': 300, 'AMZN': 3500, 'TSLA': 700}
+print(stock_prices)
+
+def get_portfolio(stock_prices:dict)->list:
+    portfolio=[]
+    while True:
+
+        name=input('Enter stock name: (press q to quit) ').upper()
+
+        if name=='Q':
+            break
+
+        price=stock_prices.get(name)
+
+        if price is None:
+            print('Stock not found. Please try again.')
+        else:
+            print(f'stock {name} is added to portfolio')
+            portfolio.append(name)
+    return portfolio
+
+portfolio=get_portfolio(stock_prices)
+print('portfolio',portfolio)
+
+def save_data(portfolio:list)->None:
+    f1=open('portfolio.txt','a')
+    for stock in portfolio:
+        f1.write(stock+'\n')
+    f1.close()
+
+save_data(portfolio)
