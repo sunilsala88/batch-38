@@ -20,34 +20,47 @@ data='this is some import data'
 
 
 
-stock_prices={'AAPL': 150, 'GOOG': 2800, 'MSFT': 300, 'AMZN': 3500, 'TSLA': 700}
-print(stock_prices)
+# stock_prices={'AAPL': 150, 'GOOG': 2800, 'MSFT': 300, 'AMZN': 3500, 'TSLA': 700}
+# print(stock_prices)
 
-def get_portfolio(stock_prices:dict)->dict:
-    portfolio={}
-    while True:
+# def get_portfolio(stock_prices:dict)->dict:
+#     portfolio={}
+#     while True:
 
-        name=input('Enter stock name: (press q to quit) ').upper()
+#         name=input('Enter stock name: (press q to quit) ').upper()
 
-        if name=='Q':
-            break
+#         if name=='Q':
+#             break
 
-        price=stock_prices.get(name)
+#         price=stock_prices.get(name)
 
-        if price is None:
-            print('Stock not found. Please try again.')
-        else:
-            print(f'stock {name} is added to portfolio')
-            portfolio.update({  name:price})
-    return portfolio
+#         if price is None:
+#             print('Stock not found. Please try again.')
+#         else:
+#             print(f'stock {name} is added to portfolio')
+#             portfolio.update({  name:price})
+#     return portfolio
 
-portfolio=get_portfolio(stock_prices)
-print('portfolio',portfolio)
+# portfolio=get_portfolio(stock_prices)
+# print('portfolio',portfolio)
 
-def save_data(portfolio:dict)->None:
-    f1=open('portfolio.txt','a')
-    for stock,price in portfolio.items():
-        f1.write(stock+':'+str(price)+'\n')
-    f1.close()
+# def save_data(portfolio:dict)->None:
+#     f1=open('portfolio.txt','a')
+#     for stock,price in portfolio.items():
+#         f1.write(stock+':'+str(price)+'\n')
+#     f1.close()
 
-save_data(portfolio)
+# save_data(portfolio)
+
+
+
+
+
+
+f2=open('name.txt','r')
+n=f2.read()
+f2.close()
+
+
+with open('name.txt','r') as f2:
+    n=f2.read()
