@@ -33,3 +33,18 @@ def greet(name='User'):
 greet()
 
 #. Keyword Arguments
+
+def display_info(name, city):
+    print(f"{name} lives in {city}.")
+
+display_info(city="Mumbai", name="Ravi")
+
+
+
+def outer():
+    def inner():
+        print("Inner function executed.")
+    inner()
+    print("Outer function executed.")
+
+outer()
