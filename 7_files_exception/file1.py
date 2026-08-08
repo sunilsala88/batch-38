@@ -23,8 +23,8 @@ data='this is some import data'
 stock_prices={'AAPL': 150, 'GOOG': 2800, 'MSFT': 300, 'AMZN': 3500, 'TSLA': 700}
 print(stock_prices)
 
-def get_portfolio(stock_prices:dict)->list:
-    portfolio=[]
+def get_portfolio(stock_prices:dict)->dict:
+    portfolio={}
     while True:
 
         name=input('Enter stock name: (press q to quit) ').upper()
@@ -38,16 +38,16 @@ def get_portfolio(stock_prices:dict)->list:
             print('Stock not found. Please try again.')
         else:
             print(f'stock {name} is added to portfolio')
-            portfolio.append(name)
+            portfolio.update({  name:price})
     return portfolio
 
 portfolio=get_portfolio(stock_prices)
 print('portfolio',portfolio)
 
-def save_data(portfolio:list)->None:
+def save_data(portfolio:dict)->None:
     f1=open('portfolio.txt','a')
-    for stock in portfolio:
-        f1.write(stock+'\n')
+    for stock,price in portfolio.items():
+        f1.write(stock+':'+str(price)+'\n')
     f1.close()
 
 save_data(portfolio)
