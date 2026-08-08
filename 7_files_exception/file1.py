@@ -9,8 +9,12 @@ data='this is some import data'
 
 
 
-f2=open('name.txt','r')
-n=f2.read()
-f2.close()
+# f2=open('name.txt','r')
+# n=f2.read()
+# f2.close()
 
-print(n)
+
+f3=open('demo.txt','a')
+f3.write('tsla\n')
+f3.close()
+
