@@ -4,6 +4,12 @@
 #class attribute-> variable inside class but outside method
 #instance attribute-> variable inside class and inside method
 #method-> function inside class
+#constructor-> method which is called automatically when we create object of class
+#dunder method-> method which is called automatically when we perform some operation on object
+#self-> it is a reference to the current object of class
+#instance attribute are created using self
+#all methods of class should have self as first parameter
+#access any attribute inside class using self
 
 
 #object oreiented programming->we can create our own data type using class and object
