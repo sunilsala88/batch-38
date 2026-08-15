@@ -12,3 +12,8 @@ class Circle:
     def get_area(self):
         return 3.14*self.radius*self.radius
 
+
+if __name__=="__main__":
+    print('this is file1.py')
+
+    print('abc')
