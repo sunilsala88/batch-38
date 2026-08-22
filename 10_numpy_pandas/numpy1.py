@@ -16,3 +16,15 @@ print(np2)
 
 np3=np.ones(10,dtype=int)
 print(np3)
+
+lm=[[1,2,3],[4,5,6],[7,8,9]]
+print(lm)
+npm=np.array(lm,dtype=int)
+print(npm)
+print(npm[2,2])
+
+np5=np.arange(50,75)
+print(np5)
+np5=np5.reshape(5,5)
+print(np5)
+print(np5[4,3])
