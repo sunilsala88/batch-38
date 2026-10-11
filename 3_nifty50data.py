@@ -11,7 +11,7 @@ from fyers_apiv3 import fyersModel
 
 CLIENT_ID = 'G80JG7X1EA-200'
 RESOLUTION = '1'  # 1 minute
-DAYS = 365
+DAYS = 2000
 CHUNK_DAYS = 100  # Fyers allows at most 100 days per request for intraday resolutions
 OUTPUT_DIR = Path('data/nifty50_1min')
 COMBINED_FILE = Path('data/nifty50_1min_1y.parquet')
@@ -28,12 +28,7 @@ NIFTY50_CSV_URL = 'https://nsearchives.nseindia.com/content/indices/ind_nifty50l
 # Used only if the live list from NSE cannot be downloaded
 FALLBACK_NIFTY50 = [
     'ADANIENT', 'ADANIPORTS', 'APOLLOHOSP', 'ASIANPAINT', 'AXISBANK', 'BAJAJ-AUTO', 'BAJAJFINSV',
-    'BAJFINANCE', 'BEL', 'BHARTIARTL', 'CIPLA', 'COALINDIA', 'DRREDDY', 'EICHERMOT', 'ETERNAL',
-    'GRASIM', 'HCLTECH', 'HDFCBANK', 'HDFCLIFE', 'HINDALCO', 'HINDUNILVR', 'ICICIBANK', 'INDIGO',
-    'INFY', 'ITC', 'JIOFIN', 'JSWSTEEL', 'KOTAKBANK', 'LT', 'M&M', 'MARUTI', 'MAXHEALTH',
-    'NESTLEIND', 'NTPC', 'ONGC', 'POWERGRID', 'RELIANCE', 'SBILIFE', 'SBIN', 'SHRIRAMFIN',
-    'SUNPHARMA', 'TATACONSUM', 'TATASTEEL', 'TCS', 'TECHM', 'TITAN', 'TMPV', 'TRENT',
-    'ULTRACEMCO', 'BSE',
+
 ]
 
 # Token saved by first.py

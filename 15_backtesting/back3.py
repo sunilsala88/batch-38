@@ -1,9 +1,21 @@
-import yfinance as yf
 import pandas as pd
 import numpy as np
 import pandas_ta_classic as ta
 
-data=yf.download("RELIANCE.NS", period="2y", multi_level_index=False)
+# load 1 min data
+df=pd.read_parquet('/Users/algo trading 2026/batch 38/data/nifty50_1min/APOLLOHOSP.parquet')
+df=df.set_index('datetime')
+df.index=df.index.tz_localize(None)
+
+# resample 1 min -> daily
+data=df.resample('1D').agg({
+    'open':'first',
+    'high':'max',
+    'low':'min',
+    'close':'last',
+    'volume':'sum'
+}).dropna()   # drop weekends/holidays (no candles)
+data.columns=['Open','High','Low','Close','Volume']   # backtesting.py needs these names
 print(data)
 
 
@@ -94,24 +106,32 @@ def get_supertrend_direction(df,period,multiplier):
     supertrend,direction=get_supertrend(df,period,multiplier)
     return direction
 
+def get_adx(df,period):
+    adx=ta.adx(df['High'],df['Low'],df['Close'],length=period)
+    return adx[f'ADX_{period}']
+
 
 class ema_supertrend_strategy(Strategy):
-    ema_period=50
+    ema_period=70
     st_period=10
     st_multiplier=3
+    adx_period=14
+    adx_threshold=25   # below this the market is treated as sideways
 
     def init(self):
         self.ema1=self.I(get_ema,self.data.Close.s,self.ema_period)
         self.st=self.I(get_supertrend_line,self.data.df,self.st_period,self.st_multiplier,overlay=True)
         self.st_dir=self.I(get_supertrend_direction,self.data.df,self.st_period,self.st_multiplier,overlay=False)
+        self.adx=self.I(get_adx,self.data.df,self.adx_period,overlay=False)
 
     def next(self):
         current_closing_price=self.data.Close[-1]
         current_ema=self.ema1[-1]
         current_direction=self.st_dir[-1]
+        current_adx=self.adx[-1]
 
-        # entry: supertrend positive (uptrend) and close above ema
-        if not self.position and current_direction==1 and current_closing_price>current_ema:
+        # entry: supertrend positive (uptrend), close above ema and adx shows a trending market
+        if not self.position and current_direction==1 and current_closing_price>current_ema and current_adx>self.adx_threshold:
             self.buy()
         # exit: close below ema
         elif self.position and current_closing_price<current_ema:
@@ -123,3 +143,23 @@ result=b1.run()
 b1.plot()
 print(result)
 print(result['_trades'])
+
+
+# optimize adx_threshold and ema_period to maximize Return [%]
+opt_result,heatmap=b1.optimize(
+    ema_period=range(10,105,5),
+    adx_threshold=range(15,45,5),
+    maximize='Return [%]',
+    return_heatmap=True
+)
+print(opt_result)
+print('best params:',opt_result['_strategy'])
+
+# top 10 combinations
+print(heatmap.sort_values(ascending=False).head(10))
+
+# heatmap of return for every combination
+from backtesting.lib import plot_heatmaps
+plot_heatmaps(heatmap,agg='mean')
+
+b1.plot()   # plots the best run
